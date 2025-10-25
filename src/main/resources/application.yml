@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: driver-route
+          uri: lb://driver-service
+          predicates:
+            - Path=/api/driver/**, /api/driver
+
+        - id: trip-route
+          uri: lb://trip-service
+          predicates:
+            - Path=/api/trip/**, /api/trip,
+
+        - id: user-route
+          uri: lb://user-service
+          predicates:
+            - Path=/api/auth/**, /api/user, /api/user/**
